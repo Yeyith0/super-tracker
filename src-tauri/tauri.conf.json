@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Super Tracker",
+  "version": "0.1.0",
+  "identifier": "com.supertracker.app",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Super Tracker",
+        "width": 1440,
+        "height": 900,
+        "minWidth": 1100,
+        "minHeight": 720,
+        "center": true,
+        "resizable": true,
+        "decorations": false,
+        "backgroundColor": "#121314"
+      }
+    ],
+    "security": {
+      "csp": {
+        "default-src": "'self'",
+        "script-src": "'self'",
+        "style-src": "'self' 'unsafe-inline'",
+        "img-src": "'self' asset: http://asset.localhost data: blob:",
+        "font-src": "'self' data:",
+        "media-src": "'self' asset: http://asset.localhost blob:",
+        "connect-src": "'self' ipc: http://ipc.localhost"
+      },
+      "dangerousDisableAssetCspModification": ["style-src"]
+    }
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDRFN0QzOEVFNkQ3MjlFREIKUldUYm5uSnQ3amg5VGo5Z2doYy9JVENqWTNHbnZ1c3MwSmVSZG9lQzYxSTM4b2lMUFZHVmZwNjkK",
+      "endpoints": ["https://github.com/Yeyith0/super-tracker/releases/latest/download/latest.json"],
+      "windows": {
+        "installMode": "passive"
+      }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "publisher": "Yiğitcan Kılıç",
+    "copyright": "© 2026 Yiğitcan Kılıç. All rights reserved.",
+    "licenseFile": "legal/TERMS.txt",
+    "resources": {
+      "../LICENSE": "LICENSE.txt",
+      "../THIRD_PARTY_LICENSES.md": "THIRD_PARTY_LICENSES.md"
+    },
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "installerIcon": "icons/icon.ico"
+      }
+    }
+  }
+}

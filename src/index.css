@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/* Tailwind color utilities map to the theme tokens written on <html> by applyTheme(). */
+@theme inline {
+  --font-sans: "Chakra Petch", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-bg: var(--bg);
+  --color-sidebar: var(--sidebar);
+  --color-strip: var(--strip);
+  --color-panel: var(--panel);
+  --color-inset: var(--inset);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-cyan: var(--cyan);
+  --color-buff: var(--buff);
+  --color-danger: var(--danger);
+  --color-danger-text: var(--danger-text);
+  --color-on-accent: var(--on-accent);
+  --color-warn-fill: var(--warn-fill);
+  --color-alert-fill: var(--alert-fill);
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --hud-fast: 150ms;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--line-strong);
+    border: 2px solid var(--bg);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--muted);
+  }
+}
+
+@layer components {
+  /* Main background with the faint horizontal scanline (1px line every 3px), toggled in Settings. */
+  .hud-bg {
+    background-color: var(--bg);
+  }
+
+  html[data-scanlines="on"] .hud-bg {
+    background-image: repeating-linear-gradient(to bottom, var(--scanline) 0 1px, transparent 1px 3px);
+  }
+
+  /* Small mono uppercase labels: breadcrumbs, meta lines, codes. */
+  .hud-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.4;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+
+  /* Panel section titles: small uppercase letter-spaced accent text. */
+  .section-title {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* Empty image placeholder: diagonal stripes. */
+  .hud-stripes {
+    background-color: var(--inset);
+    background-image: repeating-linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--line) 75%, transparent) 0 14px,
+      transparent 14px 28px
+    );
+  }
+
+  .hud-transition {
+    transition-duration: var(--hud-fast);
+    transition-timing-function: ease-out;
+  }
+
+  /* Native <dialog> used by <Modal>. */
+  dialog.hud-modal::backdrop {
+    background: rgb(0 0 0 / 0.65);
+  }
+}
+
+@keyframes hud-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hud-toast-enter {
+  animation: hud-toast-in var(--hud-fast) ease-out;
+}
+
+/* Respect the Windows "Animation effects" setting. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

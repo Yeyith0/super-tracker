@@ -1,0 +1,15 @@
+# Checks content/*.json and version-policy.json on every push, so a broken file never reaches the
+# content channel that installed apps download from.
+name: Validate content
+
+on: [push, pull_request]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: lts/*
+      - run: node scripts/validate-content.mjs
