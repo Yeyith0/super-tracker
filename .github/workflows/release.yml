@@ -1,6 +1,7 @@
 # Builds the Windows installer when a version tag (v0.2.0, ...) is pushed, signs the update with the
 # updater key from the repository secrets, and creates a DRAFT GitHub Release with the installer and
-# latest.json. Publish the draft to roll the update out to everyone.
+# latest.json. Title and notes come from that version's section in CHANGELOG.md (also shown in the app).
+# Publish the draft to roll the update out to everyone.
 name: Release
 
 on:
@@ -31,6 +32,18 @@ jobs:
 
       - run: npm test
 
+      - name: Release notes from CHANGELOG.md
+        id: notes
+        shell: bash
+        run: |
+          node scripts/release-notes.mjs "${GITHUB_REF_NAME}" > notes.txt
+          {
+            echo "title=$(head -n 1 notes.txt)"
+            echo "body<<NOTES_EOF"
+            tail -n +2 notes.txt
+            echo "NOTES_EOF"
+          } >> "$GITHUB_OUTPUT"
+
       - uses: tauri-apps/tauri-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -38,11 +51,8 @@ jobs:
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
         with:
           tagName: ${{ github.ref_name }}
-          releaseName: Super Tracker ${{ github.ref_name }}
-          releaseBody: |
-            Download "Super Tracker_..._x64-setup.exe" below and run it.
-            The installer is not code-signed yet, so Windows may show "Windows protected your PC": choose More info -> Run anyway.
-            Installed copies update themselves.
+          releaseName: ${{ steps.notes.outputs.title }}
+          releaseBody: ${{ steps.notes.outputs.body }}
           releaseDraft: true
           prerelease: false
           args: --config src-tauri/tauri.release.conf.json

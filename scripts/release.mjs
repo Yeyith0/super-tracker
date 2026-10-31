@@ -6,6 +6,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { compareVersions, isValidVersion } from "../src/update/semver.js";
+import { changelogSection } from "./release-notes.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const git = (...args) => execFileSync("git", args, { cwd: ROOT, encoding: "utf8" }).trim();
@@ -22,6 +23,7 @@ const current = JSON.parse(readFileSync(pkgPath, "utf8")).version;
 if (compareVersions(version, current) <= 0) fail(`${version} must be higher than the current version ${current}.`);
 if (git("status", "--porcelain")) fail("commit or stash your changes first (git status is not clean).");
 if (git("tag", "--list", `v${version}`)) fail(`tag v${version} already exists.`);
+if (!changelogSection(version)) fail(`add a "## ${version} — Title" section with the release notes to CHANGELOG.md first.`);
 
 function replaceOnce(path, pattern, replacement) {
   const text = readFileSync(path, "utf8");

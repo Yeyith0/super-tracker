@@ -60,11 +60,17 @@ One-time setup:
 
 Every release:
 
-```bash
-npm run release 0.2.0
-git push
-git push origin v0.2.0
-```
+1. Add a `## 0.2.0 — Short title` section with player-facing notes at the top of `CHANGELOG.md` and commit it.
+2. Run:
+
+   ```bash
+   npm run release 0.2.0
+   git push
+   git push origin v0.2.0
+   ```
+
+The release title and notes on GitHub, and the notes in the app's "UPDATE READY" notice, come from that
+`CHANGELOG.md` section.
 
 `npm run release` bumps the version in `package.json`, `package-lock.json`, `src-tauri/tauri.conf.json`,
 `src-tauri/Cargo.toml` and `Cargo.lock`, commits and tags. Pushing the tag starts the release build, which creates a

@@ -13,8 +13,17 @@ const store = () => useUpdateStore.getState();
 const messageOf = (error) => (typeof error === "string" ? error : error?.message ?? "Unknown error");
 const BUSY = ["checking", "downloading", "installing"];
 
+// Release notes come from CHANGELOG.md as Markdown; the toast shows them as one plain line.
+const plainNotes = (markdown = "") =>
+  markdown
+    .split(/\n### /)[0]
+    .replace(/[#*`>_]/g, "")
+    .replace(/^\s*-\s+/gm, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
 function announceReady(update) {
-  const notes = (update.body ?? "").trim();
+  const notes = plainNotes(update.body);
   readyToastId = toast({
     label: `Update ready v${update.version}`,
     message: notes ? (notes.length > 180 ? `${notes.slice(0, 180)}…` : notes) : "A new version has been downloaded.",
