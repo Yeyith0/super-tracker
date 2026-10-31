@@ -8,6 +8,11 @@ Installed copies update themselves.
 
 > Windows SmartScreen: the installer is not code-signed yet, so the first install shows "Windows protected your PC".
 > Choose **More info → Run anyway**. (TODO: buy a code-signing certificate and sign the installer in the release workflow.)
+>
+> Microsoft Defender may flag a new unsigned release with a machine-learning guess such as `Trojan:Win32/Bearfoos.A!ml`
+> (the `!ml` suffix). This is a false positive. After each release, submit the installer and the installed
+> `super-tracker.exe` at <https://www.microsoft.com/en-us/wdsi/filesubmission> ("Incorrectly detected as malware/malicious");
+> Microsoft usually clears it within a few days. Code signing makes this much rarer.
 
 ## Prerequisites (one time)
 
