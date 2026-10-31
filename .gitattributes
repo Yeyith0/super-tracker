@@ -1,0 +1,4 @@
+* text=auto
+
+# Generated with Windows line endings for the NSIS installer; keep it byte-for-byte (a test compares it).
+src-tauri/legal/TERMS.txt -text

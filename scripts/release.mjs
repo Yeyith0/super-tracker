@@ -32,8 +32,8 @@ function replaceOnce(path, pattern, replacement) {
 // package.json / tauri.conf.json: only the top-level "version" line, keeping the file's formatting.
 replaceOnce(pkgPath, /^(\s*"version":\s*")[^"]+(")/m, `$1${version}$2`);
 replaceOnce(join(ROOT, "src-tauri/tauri.conf.json"), /^(\s*"version":\s*")[^"]+(")/m, `$1${version}$2`);
-replaceOnce(join(ROOT, "src-tauri/Cargo.toml"), /(\[package\][^[]*?\nversion\s*=\s*")[^"]+(")/, `$1${version}$2`);
-replaceOnce(join(ROOT, "src-tauri/Cargo.lock"), /(name = "super-tracker"\nversion = ")[^"]+(")/, `$1${version}$2`);
+replaceOnce(join(ROOT, "src-tauri/Cargo.toml"), /(\[package\][^[]*?\r?\nversion\s*=\s*")[^"]+(")/, `$1${version}$2`);
+replaceOnce(join(ROOT, "src-tauri/Cargo.lock"), /(name = "super-tracker"\r?\nversion = ")[^"]+(")/, `$1${version}$2`);
 
 const lockPath = join(ROOT, "package-lock.json");
 const lock = JSON.parse(readFileSync(lockPath, "utf8"));
