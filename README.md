@@ -3,6 +3,8 @@
 Fan-made companion **desktop app** for Helldivers 2 on Windows (Tauri 2 + React + Vite + Tailwind).
 Not affiliated with Arrowhead Game Studios or Sony Interactive Entertainment.
 
+Caution: This app was heavily made with AI tools since I have no experience than a monkey with a keyboard in coding, since I have no intention of gaining any money from this project ,at least until I need to buy/hire a server for the upcoming features which would only include small ads on the app,  I am hoping it won't get any hate.
+
 **Download:** the latest installer is on the [Releases page](https://github.com/Yeyith0/super-tracker/releases).
 Installed copies update themselves.
 
