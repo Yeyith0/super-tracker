@@ -22,6 +22,13 @@ const pkgPath = join(ROOT, "package.json");
 const current = JSON.parse(readFileSync(pkgPath, "utf8")).version;
 if (compareVersions(version, current) <= 0) fail(`${version} must be higher than the current version ${current}.`);
 if (git("status", "--porcelain")) fail("commit or stash your changes first (git status is not clean).");
+// Edits made on github.com (e.g. README) must be merged first, or the push of main would be rejected.
+try {
+  git("fetch", "origin", "--quiet");
+  if (git("rev-list", "--count", "HEAD..origin/main") !== "0") fail("GitHub has changes this copy does not: run `git pull` first.");
+} catch {
+  console.warn("Could not reach GitHub to check for new changes; continuing.");
+}
 if (git("tag", "--list", `v${version}`)) fail(`tag v${version} already exists.`);
 if (!changelogSection(version)) fail(`add a "## ${version} — Title" section with the release notes to CHANGELOG.md first.`);
 
