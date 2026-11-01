@@ -12,7 +12,7 @@ export default function DropoffChart({ a, b, height = 232 }) {
   if (!hasA && !hasB) {
     return (
       <div className="flex items-center justify-center border border-line bg-inset font-mono text-[12px] uppercase tracking-[0.1em] text-muted" style={{ height }}>
-        No drop-off: full damage at any range
+        No drop-off data yet
       </div>
     );
   }

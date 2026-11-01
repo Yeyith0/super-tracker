@@ -9,6 +9,7 @@
     "dev": "vite",
     "licenses": "node scripts/generate-licenses.mjs",
     "validate-content": "node scripts/validate-content.mjs",
+    "sync-wiki": "node scripts/sync-wiki.mjs",
     "release": "node scripts/release.mjs",
     "prebuild": "node scripts/generate-licenses.mjs",
     "build": "vite build",

@@ -1,0 +1,32 @@
+{
+  "_about": "Values the Helldivers Wiki does not provide, merged by scripts/sync-wiki.mjs. reloadTime and dropoff are approximate Super Tracker values; stratagems are curated here because the wiki has no damage or penetration for them (their cooldown still comes from the wiki).",
+  "idAliases": {"frag":"frag-grenade","impact":"impact-grenade","thermite":"thermite-grenade"},
+  "approximate": {
+    "liberator": {"reloadTime":2.1,"dropoff":[{"distance":0,"damage":60},{"distance":30,"damage":60},{"distance":60,"damage":50},{"distance":80,"damage":42},{"distance":100,"damage":38}]},
+    "sickle": {"reloadTime":3,"dropoff":[{"distance":0,"damage":55},{"distance":20,"damage":55},{"distance":40,"damage":44},{"distance":70,"damage":36},{"distance":100,"damage":33}]},
+    "breaker": {"reloadTime":3,"dropoff":[{"distance":0,"damage":330},{"distance":10,"damage":300},{"distance":25,"damage":180},{"distance":50,"damage":70},{"distance":100,"damage":20}]},
+    "diligence-counter-sniper": {"reloadTime":2.6,"dropoff":[{"distance":0,"damage":200},{"distance":50,"damage":200},{"distance":100,"damage":185}]},
+    "scorcher": {"reloadTime":2.4,"dropoff":[{"distance":0,"damage":200},{"distance":60,"damage":200},{"distance":100,"damage":190}]},
+    "eruptor": {"reloadTime":3.5,"dropoff":[{"distance":0,"damage":230},{"distance":100,"damage":230}]},
+    "punisher": {"reloadTime":2.8,"dropoff":[{"distance":0,"damage":405},{"distance":10,"damage":380},{"distance":25,"damage":220},{"distance":50,"damage":90},{"distance":100,"damage":30}]},
+    "redeemer": {"reloadTime":1.9,"dropoff":[{"distance":0,"damage":60},{"distance":20,"damage":56},{"distance":50,"damage":42},{"distance":100,"damage":28}]},
+    "peacemaker": {"reloadTime":1.6,"dropoff":[{"distance":0,"damage":75},{"distance":30,"damage":70},{"distance":60,"damage":55},{"distance":100,"damage":40}]},
+    "senator": {"reloadTime":2.7,"dropoff":[{"distance":0,"damage":200},{"distance":40,"damage":190},{"distance":100,"damage":150}]},
+    "railgun": {"reloadTime":2.2,"dropoff":[{"distance":0,"damage":900},{"distance":100,"damage":900}]},
+    "autocannon": {"reloadTime":3,"dropoff":[{"distance":0,"damage":260},{"distance":100,"damage":255}]},
+    "quasar-cannon": {"reloadTime":17,"dropoff":[{"distance":0,"damage":2000},{"distance":100,"damage":2000}]},
+    "arc-thrower": {"reloadTime":null,"dropoff":[{"distance":0,"damage":250},{"distance":35,"damage":250},{"distance":45,"damage":0}]},
+    "machine-gun": {"reloadTime":5.5,"dropoff":[{"distance":0,"damage":90},{"distance":50,"damage":85},{"distance":100,"damage":72}]},
+    "recoilless-rifle": {"reloadTime":3.8,"dropoff":[{"distance":0,"damage":3200},{"distance":100,"damage":3200}]},
+    "frag-grenade": {"reloadTime":null,"dropoff":[]},
+    "impact-grenade": {"reloadTime":null,"dropoff":[]},
+    "thermite-grenade": {"reloadTime":null,"dropoff":[]}
+  },
+  "stratagems": [
+    {"id":"orbital-laser","name":"Orbital Laser","category":"stratagems","type":"Orbital","image":"/images/weapons/orbital-laser.png","damage":3000,"fireRate":null,"magSize":4,"reloadTime":300,"recoil":null,"ap":6,"penClass":"anti-tank","dropoff":[]},
+    {"id":"eagle-500kg-bomb","name":"Eagle 500kg Bomb","category":"stratagems","type":"Eagle","image":"/images/weapons/eagle-500kg-bomb.png","damage":1500,"fireRate":null,"magSize":2,"reloadTime":8,"recoil":null,"ap":6,"penClass":"anti-tank","dropoff":[]},
+    {"id":"orbital-railcannon-strike","name":"Orbital Railcannon Strike","category":"stratagems","type":"Orbital","image":"/images/weapons/orbital-railcannon-strike.png","damage":3500,"fireRate":null,"magSize":null,"reloadTime":180,"recoil":null,"ap":6,"penClass":"anti-tank","dropoff":[]},
+    {"id":"orbital-precision-strike","name":"Orbital Precision Strike","category":"stratagems","type":"Orbital","image":"/images/weapons/orbital-precision-strike.png","damage":1000,"fireRate":null,"magSize":null,"reloadTime":90,"recoil":null,"ap":6,"penClass":"anti-tank","dropoff":[]},
+    {"id":"eagle-airstrike","name":"Eagle Airstrike","category":"stratagems","type":"Eagle","image":"/images/weapons/eagle-airstrike.png","damage":1200,"fireRate":null,"magSize":2,"reloadTime":8,"recoil":null,"ap":4,"penClass":"heavy","dropoff":[]}
+  ]
+}

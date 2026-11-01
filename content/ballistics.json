@@ -1,13 +1,13 @@
 {
-  "contentVersion": 1,
+  "contentVersion": 2,
   "schemaVersion": 1,
   "sample": true,
-  "scale": { "min": 1, "max": 6, "tiers": 5 },
+  "scale": { "min": 1, "max": 10, "tiers": 5 },
   "classes": [
     { "id": "light", "label": "Light Pen", "minAp": 1, "maxAp": 2, "color": "cyan", "summary": "effective vs. light armor only" },
     { "id": "medium", "label": "Medium Pen", "minAp": 3, "maxAp": 3, "color": "accent-2", "summary": "pierces medium armor" },
     { "id": "heavy", "label": "Heavy Pen", "minAp": 4, "maxAp": 4, "color": "danger", "summary": "pierces heavy armor" },
-    { "id": "anti-tank", "label": "Anti-Tank", "minAp": 5, "maxAp": 6, "color": "accent", "summary": "pierces tank and vehicle armor" }
+    { "id": "anti-tank", "label": "Anti-Tank", "minAp": 5, "maxAp": 10, "color": "accent", "summary": "pierces tank and vehicle armor" }
   ],
   "rules": {
     "penetrates": "ap > armor",

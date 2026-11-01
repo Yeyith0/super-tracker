@@ -17,6 +17,11 @@ allowed under the Terms of Use shown in the app.
 Third-party components included in Super Tracker keep their own licenses; see
 THIRD_PARTY_LICENSES.md.
 
+Exception: the weapon statistics in content/weapons.json are adapted from the
+Helldivers Wiki (https://helldivers.wiki.gg) and are licensed under Creative
+Commons Attribution-NonCommercial-ShareAlike 4.0
+(https://creativecommons.org/licenses/by-nc-sa/4.0/), like their source.
+
 Helldivers, Helldivers 2 and related names, logos and images are trademarks or
 copyrighted material of their respective owners and are not covered by this
 notice. Super Tracker is not affiliated with, endorsed or sponsored by Arrowhead

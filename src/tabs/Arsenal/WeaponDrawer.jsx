@@ -16,6 +16,7 @@ export default function WeaponDrawer({ weapon, classFor, scale, patch, slot, onC
         <>
           <div className="flex items-center justify-between gap-4">
             <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-muted">
+              {weapon.designation ? `${weapon.designation} · ` : ""}
               {weapon.type} · {penClass.label}
             </p>
             <PatchArrow status={weapon.patchStatus} className="text-[14px]" />
@@ -48,6 +49,23 @@ export default function WeaponDrawer({ weapon, classFor, scale, patch, slot, onC
             </div>
           </dl>
 
+          {weapon.damageText || weapon.penetrationText ? (
+            <dl className="mt-4 space-y-2 text-[14px]">
+              {weapon.damageText ? (
+                <div>
+                  <dt className="hud-label text-muted">Damage breakdown</dt>
+                  <dd className="mt-0.5 text-text-2">{weapon.damageText}</dd>
+                </div>
+              ) : null}
+              {weapon.penetrationText ? (
+                <div>
+                  <dt className="hud-label text-muted">Penetration</dt>
+                  <dd className="mt-0.5 text-text-2">{weapon.penetrationText}</dd>
+                </div>
+              ) : null}
+            </dl>
+          ) : null}
+
           <p className="hud-label mb-2 mt-6 text-text-2">Damage drop-off (dmg / meters)</p>
           <DropoffChart a={weapon} height={200} />
 
@@ -60,7 +78,9 @@ export default function WeaponDrawer({ weapon, classFor, scale, patch, slot, onC
           <HudButton block variant={slot ? "secondary" : "primary"} className="mt-6" onClick={onCompare}>
             {slot ? `Remove from slot ${slot}` : "Add to compare"}
           </HudButton>
-          <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">Approximate sample values</p>
+          <p className="mt-4 text-[12px] leading-relaxed text-muted">
+            {weapon.wikiTitle ? "Stats from the Helldivers Wiki (CC BY-NC-SA 4.0); reload time and drop-off are approximate." : "Approximate values."}
+          </p>
         </>
       ) : null}
     </Drawer>

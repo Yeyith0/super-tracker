@@ -1,5 +1,5 @@
 {
-  "contentVersion": 1,
+  "contentVersion": 2,
   "schemaVersion": 1,
   "contact": {
     "email": "thehelldiverjohn@gmail.com",
@@ -169,7 +169,7 @@
       ]
     },
     "notices": {
-      "version": 1,
+      "version": 2,
       "updatedAt": "2026-11-01",
       "title": "Notices",
       "body": [
@@ -183,6 +183,9 @@
         "",
         "## Copyright",
         "{{copyright}} The source code is published so you can see what the app does; it is not open source. See LICENSE in the source repository.",
+        "",
+        "## Weapon data",
+        "Weapon statistics in the Arsenal come from the [Helldivers Wiki](https://helldivers.wiki.gg) and are used under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license. Super Tracker adapted them (units and layout, plus approximate reload times and drop-off curves); the adapted weapon data is shared under the same license.",
         "",
         "## Open-source components",
         "Super Tracker is built with open-source software. Each component is used under its own license; see [Licenses](#/legal/licenses)."

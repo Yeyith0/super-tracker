@@ -74,7 +74,8 @@ export default function AppShell() {
       ) : (
         <div className="flex min-h-0 flex-1">
           <Sidebar />
-          <main ref={mainRef} className="hud-bg min-w-0 flex-1 overflow-y-auto">
+          {/* relative: absolutely positioned children (sr-only labels) stay inside the scroll area. */}
+          <main ref={mainRef} className="hud-bg relative min-w-0 flex-1 overflow-y-auto">
             <Outlet />
           </main>
         </div>

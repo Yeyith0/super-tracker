@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import EmptyState from "../../components/EmptyState";
+import ExternalLink from "../../components/ExternalLink";
 import HudSelect from "../../components/HudSelect";
 import { useContent } from "../../content/useContentStore";
 import { useArsenalStore } from "../../store/useArsenalStore";
@@ -11,11 +12,12 @@ import WeaponDrawer from "./WeaponDrawer";
 
 /** Arsenal & Compare (design/03-arsenal.png): catalog per category, compare panel, detail drawer. */
 export default function ArsenalTab({ subtab }) {
-  const { weapons, sample, patch } = useContent("weapons");
+  const { weapons, sample, patch, source } = useContent("weapons");
   const { classes, scale } = useContent("ballistics");
   const { slotA, slotB, toggleCompare, swap, clear } = useArsenalStore();
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("name");
+  const [type, setType] = useState("all");
   const [openId, setOpenId] = useState(null);
   const [params, setParams] = useSearchParams();
   const navigate = useNavigate();
@@ -37,7 +39,12 @@ export default function ArsenalTab({ subtab }) {
     setParams({}, { replace: true });
   }, [linked, subtab.id, weapons, navigate, setParams]);
 
-  const list = sortWeapons(searchWeapons(weapons.filter((w) => w.category === subtab.id), query), sort);
+  // The type filter belongs to one category; start over when the inner tab changes.
+  useEffect(() => setType("all"), [subtab.id]);
+
+  const inCategory = weapons.filter((w) => w.category === subtab.id);
+  const typeOptions = [{ id: "all", label: "All types" }, ...[...new Set(inCategory.map((w) => w.type))].sort().map((t) => ({ id: t, label: t }))];
+  const list = sortWeapons(searchWeapons(type === "all" ? inCategory : inCategory.filter((w) => w.type === type), query), sort);
 
   return (
     <div className="grid grid-cols-[360px_minmax(0,1fr)] items-start gap-6">
@@ -53,6 +60,12 @@ export default function ArsenalTab({ subtab }) {
           />
           <HudSelect options={SORTS} value={sort} onChange={setSort} label="Sort by" className="w-[150px]" />
         </div>
+        {typeOptions.length > 2 ? (
+          <HudSelect options={typeOptions} value={type} onChange={setType} label="Filter by type" className="mb-4" />
+        ) : null}
+        <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
+          {list.length} of {inCategory.length} items
+        </p>
 
         {list.length ? (
           <div className="grid grid-cols-2 gap-3">
@@ -71,6 +84,13 @@ export default function ArsenalTab({ subtab }) {
           <EmptyState code="No results" title="Nothing matches your search" message="Try another name or type." />
         )}
 
+        {source ? (
+          <p className="mt-4 text-[12px] leading-relaxed text-muted">
+            Weapon data: <ExternalLink href={source.url}>{source.name}</ExternalLink>, used under{" "}
+            <ExternalLink href={source.licenseUrl}>{source.license}</ExternalLink>. Reload times, drop-off curves and stratagem
+            damage are approximate.
+          </p>
+        ) : null}
         {sample ? (
           <p className="mt-4 font-mono text-[11px] uppercase leading-relaxed tracking-[0.1em] text-muted">
             Sample data // approximate values, patch {patch}

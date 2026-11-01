@@ -13,9 +13,15 @@ const stat = (key) => STATS.find((s) => s.key === key);
 const arsenalTab = TABS.find((t) => t.id === "arsenal");
 
 describe("weapon content", () => {
-  it("has 15+ entries in every category", () => {
-    expect(weapons.length).toBeGreaterThanOrEqual(15);
+  it("has the wiki's weapons in every category, with stable ids", () => {
+    expect(weapons.length).toBeGreaterThanOrEqual(100);
     for (const sub of arsenalTab.subtabs) expect(weapons.some((w) => w.category === sub.id)).toBe(true);
+    expect(new Set(weapons.map((w) => w.id)).size).toBe(weapons.length);
+    expect(BUNDLED.weapons.source.license).toBe("CC BY-NC-SA 4.0");
+  });
+
+  it("uses the wiki's armor penetration (Eruptor is heavy pen)", () => {
+    expect(byId("eruptor")).toMatchObject({ ap: 4, penClass: "heavy" });
   });
 
   it("derives penClass from ap with ballistics.json", () => {
@@ -52,7 +58,7 @@ describe("arsenal data", () => {
   });
 
   it("formats unlimited magazines, reloads and missing stats", () => {
-    expect(formatStat(byId("sickle"), "magSize")).toBe("∞");
+    expect(formatStat(byId("arc-thrower"), "magSize")).toBe("∞");
     expect(formatStat(byId("liberator"), "reloadTime")).toBe("2.1s");
     expect(formatStat(byId("frag-grenade"), "fireRate")).toBe("—");
   });
@@ -68,9 +74,12 @@ describe("arsenal data", () => {
 
   it("sorts, searches and fills pen tiers", () => {
     const primaries = weapons.filter((w) => w.category === "primary");
-    expect(sortWeapons(primaries, "damage")[0].id).toBe("punisher");
+    const damages = sortWeapons(primaries, "damage").map((w) => w.damage);
+    expect(damages).toEqual([...damages].sort((a, b) => b - a));
     expect(sortWeapons(primaries, "patch")[0].patchStatus).not.toBe("none");
-    expect(searchWeapons(primaries, "shotgun").map((w) => w.id).sort()).toEqual(["breaker", "punisher"]);
+    const shotguns = searchWeapons(primaries, "shotgun");
+    expect(shotguns.length).toBeGreaterThan(2);
+    expect(shotguns.every((w) => /shotgun/i.test(w.name + w.type))).toBe(true);
     expect(tierCount(2, ballistics.scale)).toBe(2);
     expect(tierCount(6, ballistics.scale)).toBe(5);
   });
@@ -120,8 +129,9 @@ describe("arsenal tab", () => {
     const panel = screen.getByText("VS").closest("section");
     expect(within(panel).getByText("Liberator")).toBeInTheDocument();
     expect(within(panel).getByText("Sickle")).toBeInTheDocument();
-    expect(within(panel).getByText("60")).toHaveClass("text-buff");
-    expect(within(panel).getByText("55")).toHaveClass("text-danger-text");
+    const [stronger, weaker] = [byId("liberator").damage, byId("sickle").damage].sort((x, y) => y - x);
+    expect(within(panel).getByText(String(stronger))).toHaveClass("text-buff");
+    expect(within(panel).getByText(String(weaker))).toHaveClass("text-danger-text");
     fireEvent.click(within(panel).getByRole("button", { name: "Swap" }));
     expect(useArsenalStore.getState()).toMatchObject({ slotA: "sickle", slotB: "liberator" });
   });
@@ -134,10 +144,19 @@ describe("arsenal tab", () => {
 
   it("opens the detail drawer for a card", () => {
     renderAt("/arsenal/primary");
-    fireEvent.click(screen.getByRole("button", { name: /Breaker.*Shotgun/ }));
+    const card = screen.getByRole("button", { name: "Compare Breaker" }).closest("article");
+    fireEvent.click(within(card).getAllByRole("button")[1]);
     const drawer = screen.getByRole("dialog");
     expect(within(drawer).getByRole("heading", { name: "Breaker" })).toBeInTheDocument();
-    expect(within(drawer).getByText("AP 2")).toBeInTheDocument();
+    expect(within(drawer).getByText(`AP ${byId("breaker").ap}`)).toBeInTheDocument();
+    expect(within(drawer).getByText(/Helldivers Wiki/)).toBeInTheDocument();
+  });
+
+  it("filters the catalog by type", () => {
+    renderAt("/arsenal/primary");
+    fireEvent.change(screen.getByLabelText("Filter by type"), { target: { value: "Shotgun" } });
+    const count = weapons.filter((w) => w.category === "primary" && w.type === "Shotgun").length;
+    expect(screen.getByText(`${count} of ${weapons.filter((w) => w.category === "primary").length} items`)).toBeInTheDocument();
   });
 
   it("follows a Home link to the item's category and opens it", async () => {

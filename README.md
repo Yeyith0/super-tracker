@@ -106,6 +106,23 @@ release:
 structure (see `SUPPORTED_SCHEMAS` in `src/content/validate.js`); apps reject schema versions they do not know and keep
 their previous copy.
 
+## Updating weapon data
+
+Weapon stats come from the [Helldivers Wiki](https://helldivers.wiki.gg) (CC BY-NC-SA 4.0):
+
+```bash
+npm run sync-wiki
+```
+
+The script reads the wiki's weapon tables, keeps item ids stable, adds the values the wiki does not have from
+`scripts/data/weapon-overrides.json` (approximate reload times and drop-off curves, the curated stratagems), takes
+buff / nerf status from the latest patch in `content/balance.json`, validates everything and rewrites
+`content/weapons.json` (raising `contentVersion` only when something changed). Check the summary it prints, then
+commit and push: installed apps pick it up through the content channel.
+
+The wiki data is non-commercial. Before switching on sponsors or any other income, get permission from the wiki or
+replace this data source.
+
 ## Turning features on and off
 
 `content/features.json` holds feature flags:
