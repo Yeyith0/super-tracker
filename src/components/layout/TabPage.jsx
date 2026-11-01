@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Navigate, useLocation, useParams } from "react-router-dom";
 import { useFeature } from "../../content/useContentStore";
 import { tabPath } from "../../tabs/tabs";
@@ -52,7 +53,9 @@ export default function TabPage({ tab, component: Component }) {
         <PageHeader tab={tab} tabs={nav} right={flagBadge} />
       )}
       <div className="px-8 pb-10 pt-7">
-        <Component tab={tab} subtab={active} />
+        <Suspense fallback={<p className="hud-label text-muted">Loading…</p>}>
+          <Component tab={tab} subtab={active} />
+        </Suspense>
       </div>
     </>
   );

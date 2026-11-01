@@ -5,7 +5,8 @@ import TabPage from "./components/layout/TabPage";
 import { LEGAL_TAB, SETTINGS_TAB, TABS } from "./tabs/tabs";
 import HomeTab from "./tabs/Home/HomeTab";
 import DivergramTab from "./tabs/Divergram/DivergramTab";
-import ArsenalTab from "./tabs/Arsenal/ArsenalTab";
+// Loaded on first visit: the Arsenal brings in the chart library.
+const ArsenalTab = lazy(() => import("./tabs/Arsenal/ArsenalTab"));
 import LoadoutTab from "./tabs/Loadout/LoadoutTab";
 import TreasonTab from "./tabs/Treason/TreasonTab";
 import EnemiesTab from "./tabs/Enemies/EnemiesTab";

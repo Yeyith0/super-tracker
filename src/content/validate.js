@@ -11,7 +11,14 @@ export const SUPPORTED_SCHEMAS = {
   majorOrders: [1],
   balance: [1],
   officers: [1],
+  weapons: [1],
+  ballistics: [1],
 };
+
+const WEAPON_CATEGORIES = ["primary", "secondary", "support", "grenades", "stratagems"];
+const PEN_CLASSES = ["light", "medium", "heavy", "anti-tank"];
+const PATCH_STATUS = ["buff", "nerf", "none"];
+const isStat = (value) => value === null || (Number.isFinite(value) && value >= 0);
 
 const LEGAL_DOCS = ["terms", "privacy", "guidelines", "roleplay", "notices"];
 
@@ -124,6 +131,36 @@ const FILE_CHECKS = {
       ...need(isText(officer.id) && isText(officer.callsign), `${at} needs id and callsign`),
       ...need(Number.isInteger(officer.resolvedCases) && officer.resolvedCases >= 0, `${at}.resolvedCases must be a whole number`),
     ]);
+  },
+  weapons(data) {
+    return eachItem(data.weapons, "weapons", (w, at) => [
+      ...need(isText(w.id) && isText(w.name) && isText(w.type), `${at} needs id, name and type`),
+      ...need(WEAPON_CATEGORIES.includes(w.category), `${at}.category must be ${WEAPON_CATEGORIES.join(" | ")}`),
+      ...need(typeof w.image === "string" && w.image.startsWith("/images/weapons/"), `${at}.image must start with /images/weapons/`),
+      ...need(Number.isFinite(w.damage) && w.damage >= 0, `${at}.damage must be a number`),
+      ...["fireRate", "magSize", "reloadTime", "recoil"].flatMap((k) => need(isStat(w[k]), `${at}.${k} must be a number or null`)),
+      ...need(Number.isInteger(w.ap) && w.ap >= 1, `${at}.ap must be a whole number from 1`),
+      ...need(PEN_CLASSES.includes(w.penClass), `${at}.penClass must be ${PEN_CLASSES.join(" | ")}`),
+      ...need(
+        Array.isArray(w.dropoff) && w.dropoff.every((p) => Number.isFinite(p.distance) && Number.isFinite(p.damage)),
+        `${at}.dropoff must be a list of { distance, damage }`,
+      ),
+      ...need(PATCH_STATUS.includes(w.patchStatus), `${at}.patchStatus must be ${PATCH_STATUS.join(" | ")}`),
+      ...need(typeof w.patchNote === "string", `${at}.patchNote must be text`),
+    ]);
+  },
+  ballistics(data) {
+    const classErrors = eachItem(data.classes, "classes", (c, at) => [
+      ...need(PEN_CLASSES.includes(c.id), `${at}.id must be ${PEN_CLASSES.join(" | ")}`),
+      ...need(isText(c.label) && isText(c.color) && isText(c.summary), `${at} needs label, color and summary`),
+      ...need(Number.isInteger(c.minAp) && Number.isInteger(c.maxAp) && c.minAp <= c.maxAp, `${at} needs whole minAp <= maxAp`),
+    ]);
+    const pct = data.rules?.reducedDamagePct;
+    return [
+      ...classErrors,
+      ...need(isObject(data.scale) && Number.isInteger(data.scale.tiers), "scale.tiers must be a whole number"),
+      ...need(Number.isFinite(pct) && pct > 0 && pct < 100, "rules.reducedDamagePct must be between 0 and 100"),
+    ];
   },
 };
 

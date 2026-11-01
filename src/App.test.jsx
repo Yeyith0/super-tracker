@@ -34,7 +34,7 @@ describe("app shell", () => {
     render(<App />);
     expect(await screen.findByRole("heading", { name: "Arsenal & Compare" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Support" })).toHaveAttribute("aria-current", "page");
-    expect(screen.getByText("03 // Arsenal // Support")).toBeInTheDocument();
+    expect(await screen.findByRole("button", { name: "Compare Railgun" })).toBeInTheDocument();
   });
 
   it("opens a legal document in the reader", async () => {

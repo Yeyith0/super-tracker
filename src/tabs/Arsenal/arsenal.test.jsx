@@ -1,0 +1,149 @@
+import { fireEvent, render, screen, within } from "@testing-library/react";
+import { MemoryRouter, Route, Routes, useParams } from "react-router-dom";
+import { BUNDLED } from "../../content/useContentStore";
+import { useArsenalStore } from "../../store/useArsenalStore";
+import { TABS } from "../tabs";
+import ArsenalTab from "./ArsenalTab";
+import { STATS, compareStat, damageAt, dropoffRows, formatStat, penClassFor, searchWeapons, sortWeapons, tierCount } from "./arsenalData";
+
+const { weapons } = BUNDLED.weapons;
+const ballistics = BUNDLED.ballistics;
+const byId = (id) => weapons.find((w) => w.id === id);
+const stat = (key) => STATS.find((s) => s.key === key);
+const arsenalTab = TABS.find((t) => t.id === "arsenal");
+
+describe("weapon content", () => {
+  it("has 15+ entries in every category", () => {
+    expect(weapons.length).toBeGreaterThanOrEqual(15);
+    for (const sub of arsenalTab.subtabs) expect(weapons.some((w) => w.category === sub.id)).toBe(true);
+  });
+
+  it("derives penClass from ap with ballistics.json", () => {
+    for (const w of weapons) expect(penClassFor(w.ap, ballistics.classes).id).toBe(w.penClass);
+  });
+
+  it("links every balance change to a weapon and mirrors the latest patch", () => {
+    const patches = [...BUNDLED.balance.patches].sort((a, b) => b.date.localeCompare(a.date));
+    for (const change of patches.flatMap((p) => p.changes)) expect(byId(change.itemId)).toBeDefined();
+    const latest = patches[0];
+    expect(BUNDLED.weapons.patch).toBe(latest.version);
+    for (const w of weapons) {
+      const change = latest.changes.find((c) => c.itemId === w.id);
+      expect([w.id, w.patchStatus]).toEqual([w.id, change ? change.status : "none"]);
+      expect(w.patchNote).toBe(change ? change.change : "");
+    }
+  });
+
+  it("points Ministry of Defense bulletins in the news at real weapons", () => {
+    for (const item of BUNDLED.news.items.filter((i) => i.relatedItem)) expect(byId(item.relatedItem)).toBeDefined();
+  });
+});
+
+describe("arsenal data", () => {
+  it("marks the better value green and the worse red, lower winning for recoil and reload", () => {
+    const lib = byId("liberator");
+    const sickle = byId("sickle");
+    expect(compareStat(lib, sickle, stat("damage"))).toMatchObject({ a: "better", b: "worse" });
+    expect(compareStat(lib, sickle, stat("recoil"))).toMatchObject({ a: "worse", b: "better" });
+    expect(compareStat(lib, sickle, stat("reloadTime"))).toMatchObject({ a: "better", b: "worse" });
+    expect(compareStat(lib, sickle, stat("magSize"))).toMatchObject({ a: "worse", b: "better", widthB: 100 });
+    expect(compareStat(lib, lib, stat("damage"))).toMatchObject({ a: "tie", b: "tie" });
+    expect(compareStat(lib, null, stat("damage"))).toMatchObject({ a: "tie", b: null, widthB: 0 });
+  });
+
+  it("formats unlimited magazines, reloads and missing stats", () => {
+    expect(formatStat(byId("sickle"), "magSize")).toBe("∞");
+    expect(formatStat(byId("liberator"), "reloadTime")).toBe("2.1s");
+    expect(formatStat(byId("frag-grenade"), "fireRate")).toBe("—");
+  });
+
+  it("interpolates drop-off curves", () => {
+    const points = [{ distance: 0, damage: 60 }, { distance: 30, damage: 60 }, { distance: 60, damage: 50 }];
+    expect(damageAt(points, 15)).toBe(60);
+    expect(damageAt(points, 45)).toBe(55);
+    expect(damageAt(points, 100)).toBe(50);
+    expect(damageAt([], 10)).toBeNull();
+    expect(dropoffRows(byId("liberator"), null)).toHaveLength(11);
+  });
+
+  it("sorts, searches and fills pen tiers", () => {
+    const primaries = weapons.filter((w) => w.category === "primary");
+    expect(sortWeapons(primaries, "damage")[0].id).toBe("punisher");
+    expect(sortWeapons(primaries, "patch")[0].patchStatus).not.toBe("none");
+    expect(searchWeapons(primaries, "shotgun").map((w) => w.id).sort()).toEqual(["breaker", "punisher"]);
+    expect(tierCount(2, ballistics.scale)).toBe(2);
+    expect(tierCount(6, ballistics.scale)).toBe(5);
+  });
+});
+
+describe("compare store", () => {
+  beforeEach(() => useArsenalStore.getState().clear());
+
+  it("fills A then B, toggles off, swaps and clears", () => {
+    const { toggleCompare } = useArsenalStore.getState();
+    toggleCompare("liberator");
+    toggleCompare("sickle");
+    expect(useArsenalStore.getState()).toMatchObject({ slotA: "liberator", slotB: "sickle" });
+    toggleCompare("breaker");
+    expect(useArsenalStore.getState().slotB).toBe("breaker");
+    useArsenalStore.getState().swap();
+    expect(useArsenalStore.getState()).toMatchObject({ slotA: "breaker", slotB: "liberator" });
+    toggleCompare("breaker");
+    expect(useArsenalStore.getState().slotA).toBeNull();
+    useArsenalStore.getState().clear();
+    expect(useArsenalStore.getState()).toMatchObject({ slotA: null, slotB: null });
+  });
+});
+
+function Harness() {
+  const { subtab } = useParams();
+  return <ArsenalTab subtab={arsenalTab.subtabs.find((s) => s.id === subtab)} />;
+}
+
+const renderAt = (path) =>
+  render(
+    <MemoryRouter initialEntries={[path]}>
+      <Routes>
+        <Route path="/arsenal/:subtab" element={<Harness />} />
+      </Routes>
+    </MemoryRouter>,
+  );
+
+describe("arsenal tab", () => {
+  beforeEach(() => useArsenalStore.getState().clear());
+
+  it("compares two cards side by side", () => {
+    renderAt("/arsenal/primary");
+    fireEvent.click(screen.getByRole("button", { name: "Compare Liberator" }));
+    fireEvent.click(screen.getByRole("button", { name: "Compare Sickle" }));
+    expect(screen.getByRole("button", { name: "Remove Liberator from slot A" })).toBeInTheDocument();
+    const panel = screen.getByText("VS").closest("section");
+    expect(within(panel).getByText("Liberator")).toBeInTheDocument();
+    expect(within(panel).getByText("Sickle")).toBeInTheDocument();
+    expect(within(panel).getByText("60")).toHaveClass("text-buff");
+    expect(within(panel).getByText("55")).toHaveClass("text-danger-text");
+    fireEvent.click(within(panel).getByRole("button", { name: "Swap" }));
+    expect(useArsenalStore.getState()).toMatchObject({ slotA: "sickle", slotB: "liberator" });
+  });
+
+  it("searches the catalog and shows an empty state", () => {
+    renderAt("/arsenal/primary");
+    fireEvent.change(screen.getByLabelText("Search Primary"), { target: { value: "zzz" } });
+    expect(screen.getByText("Nothing matches your search")).toBeInTheDocument();
+  });
+
+  it("opens the detail drawer for a card", () => {
+    renderAt("/arsenal/primary");
+    fireEvent.click(screen.getByRole("button", { name: /Breaker.*Shotgun/ }));
+    const drawer = screen.getByRole("dialog");
+    expect(within(drawer).getByRole("heading", { name: "Breaker" })).toBeInTheDocument();
+    expect(within(drawer).getByText("AP 2")).toBeInTheDocument();
+  });
+
+  it("follows a Home link to the item's category and opens it", async () => {
+    renderAt("/arsenal/primary?item=railgun");
+    const drawer = await screen.findByRole("dialog");
+    expect(within(drawer).getByRole("heading", { name: "Railgun" })).toBeInTheDocument();
+    expect(within(drawer).getByText("Charge time 1.4s → 1.1s")).toBeInTheDocument();
+  });
+});
