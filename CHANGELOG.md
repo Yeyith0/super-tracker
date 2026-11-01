@@ -4,6 +4,19 @@ Release notes for each version. The release workflow copies the section of the t
 release and into the in-app update notice, so write it for players. `npm run release X.Y.Z` stops if the section is
 missing.
 
+## 0.3.1 — Full Armory
+
+The Arsenal now carries every weapon in the field, with stats from the Helldivers Wiki.
+
+- **145 items**: all primaries, secondaries, support weapons and grenades, plus the stratagems
+- **Correct armor penetration** for every weapon (the Eruptor is heavy pen, as every diver knows)
+- **Type filter** in every category, so you can show only shotguns, marksman rifles or energy weapons
+- **Detail panel** now shows each weapon's designation, its full damage breakdown and its penetration
+- Fixed a rare glitch where the whole window could scroll away while moving through a long list with the keyboard
+
+Reload times and damage drop-off curves are approximate and not yet available for every weapon. Weapon data:
+Helldivers Wiki (helldivers.wiki.gg), CC BY-NC-SA 4.0.
+
 ## 0.3.0 — Armory
 
 The Arsenal is open.
