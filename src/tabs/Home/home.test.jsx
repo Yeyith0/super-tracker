@@ -12,6 +12,7 @@ import {
   sortNewest,
 } from "./homeData";
 import { BalanceView, BountyView, OverviewView } from "./HomeViews";
+import { coverStyle } from "./NewsCover";
 
 const NOW = Date.parse("2026-11-01T12:00:00Z");
 const news = BUNDLED.news.items;
@@ -109,10 +110,37 @@ describe("home views", () => {
     const feed = screen.getByRole("heading", { name: "All transmissions" }).closest("section");
     fireEvent.click(within(feed).getByRole("button", { name: "Official" }));
     expect(within(feed).queryAllByText("In-universe")).toHaveLength(0);
-    const item = within(feed).getByRole("button", { name: /Bot counter-offensive/ });
+    const item = within(feed).getByRole("button", { name: /Automaton counter-offensive/ });
     expect(item).toHaveAttribute("aria-expanded", "false");
     fireEvent.click(item);
     expect(item).toHaveAttribute("aria-expanded", "true");
+  });
+
+  it("shows covers instead of tone labels", () => {
+    renderView(OverviewView);
+    const feed = screen.getByRole("heading", { name: "All transmissions" }).closest("section");
+    for (const tone of ["comedy", "satire", "serious"]) expect(within(feed).queryByText(tone)).not.toBeInTheDocument();
+    // Missing photos fall back to the automatic cover (jsdom never loads images, so trigger the error).
+    for (const img of within(feed).getAllByRole("img").filter((el) => el.tagName === "IMG")) fireEvent.error(img);
+    expect(within(feed).getAllByRole("img", { name: /illustration/ }).length).toBeGreaterThan(10);
+  });
+});
+
+describe("news covers", () => {
+  it("picks the emblem from the tag or source and stays stable per item", () => {
+    expect(coverStyle({ id: "a", kind: "official", tag: "PATCH" }).emblem).toBe("gear");
+    expect(coverStyle({ id: "b", kind: "broadcast", format: "bulletin", source: "Ministry of Defense" }).emblem).toBe("shield");
+    expect(coverStyle({ id: "c", kind: "broadcast", format: "ad", source: "Super Earth Fragrances" }).emblem).toBe("burst");
+    expect(coverStyle({ id: "d", kind: "broadcast", format: "report", source: "SEAF Frontline Desk" }).emblem).toBe("chevrons");
+    expect(coverStyle({ id: "x", kind: "broadcast", format: "report", source: "Ministry of Truth" })).toEqual(
+      coverStyle({ id: "x", kind: "broadcast", format: "report", source: "Ministry of Truth" }),
+    );
+  });
+
+  it("writes official news in the in-universe voice", () => {
+    const official = news.filter((i) => i.kind === "official");
+    expect(official.some((i) => i.tag === "PATCH" && /Ministry of Defense/.test(i.title))).toBe(true);
+    expect(official.every((i) => !/^Patch \d/.test(i.title))).toBe(true);
   });
 
   it("filters the balance tracker and shows an empty state", () => {

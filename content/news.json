@@ -1,5 +1,5 @@
 {
-  "contentVersion": 1,
+  "contentVersion": 2,
   "schemaVersion": 1,
   "items": [
     {
@@ -8,8 +8,8 @@
       "sample": true,
       "tag": "BREAKING",
       "publishedAt": "2026-11-01T08:50:00Z",
-      "title": "Bot counter-offensive detected on the eastern front",
-      "body": "Automaton forces have launched a coordinated push from the Varn Corridor towards Osk-IV. High Command is redirecting the Fourth Fleet; Helldivers are asked to prioritise defense missions in the sector."
+      "title": "Automaton counter-offensive strikes the eastern front",
+      "body": "High Command confirms that Automaton forces have broken out of the Varn Corridor and are advancing on Osk-IV. The Fourth Fleet is being redirected to the sector. Defense missions in the region are now the highest priority. Freedom does not defend itself, Helldiver."
     },
     {
       "id": "c01-permit-frontline",
@@ -18,7 +18,6 @@
       "format": "report",
       "source": "SEAF Frontline Desk",
       "publishedAt": "2026-11-01T06:15:00Z",
-      "image": "/images/news/c01-permit-frontline.png",
       "title": "SEAF Trooper Saves Helldiver, Ministry Rewards Both With a C-01 Permit",
       "body": "Private Dov Hallen of the 12th SEAF Rifles crawled into a collapsing Terminid tunnel on Varn Prime and dragged a wounded Helldiver back to extraction, armed with nothing but a shovel and an unshakeable belief in Managed Democracy. The Ministry of Humanity has rewarded the pair with a joint C-01 permit, calling it \"the natural outcome of exemplary teamwork.\" Both recipients confirmed they have not technically been on a date yet. The permit is valid for 30 days or until the next planetary evacuation, whichever comes first."
     },
@@ -29,7 +28,6 @@
       "format": "ad",
       "source": "Super Earth Fragrances",
       "publishedAt": "2026-10-31T18:00:00Z",
-      "image": "/images/news/eau-de-helldiver.png",
       "title": "EAU DE HELLDIVER — Smell Like Victory",
       "body": "Capture the scent of the front line. Top notes of scorched Terminid and fresh cordite, a heart of recycled Pelican air, and a lingering base of pure liberty. \"It smells like victory. And a little like the inside of a Hellpod.\" Available at every Ministry of Prosperity distribution center. Keep away from open flames, Bile Titans and undemocratic thoughts."
     },
@@ -39,8 +37,8 @@
       "sample": true,
       "tag": "EVENT",
       "publishedAt": "2026-10-31T12:00:00Z",
-      "title": "Defense campaign opens in the Osk sector this weekend",
-      "body": "A two-day defense campaign starts on Saturday. Completed defense missions in the Osk sector count double towards planetary liberation until Sunday 23:59 UTC."
+      "title": "Osk sector defense campaign begins this weekend",
+      "body": "By order of High Command, a two-day defense campaign opens in the Osk sector on Saturday. Every defense mission completed in the sector counts double towards planetary liberation until Sunday 23:59 UTC. The colonies are counting on you."
     },
     {
       "id": "retreat-was-advance",
@@ -80,8 +78,8 @@
       "sample": true,
       "tag": "PATCH",
       "publishedAt": "2026-10-28T10:00:00Z",
-      "title": "Patch 01.004.200 notes: 18 weapon changes, 3 stratagem fixes",
-      "body": "The latest update rebalances primary weapons, adjusts the Orbital Laser and fixes three stratagem targeting issues. See the Weapon Balance Tracker for every buff and nerf."
+      "title": "Ministry of Defense Directive 01.004.200: arsenal review complete",
+      "body": "The Ministry of Defense has completed its latest arsenal review. The Railgun, the Autocannon and the Orbital Laser were refitted for the front. To keep supply lines balanced, the Eruptor and the Liberator had to be recalibrated, and three stratagems received targeting corrections. Every change is listed in the Weapon Balance Tracker."
     },
     {
       "id": "steel-verdict-failed",
@@ -100,7 +98,6 @@
       "format": "ad",
       "source": "Freedom Fizz Beverage Directorate",
       "publishedAt": "2026-10-26T09:00:00Z",
-      "image": "/images/news/freedom-fizz.png",
       "title": "FREEDOM FIZZ — Now With 20% More Freedom",
       "body": "Thirsty after a twelve-hour defense mission? Reach for Freedom Fizz, the only soda brewed under direct supervision of the Ministry of Prosperity. Every can contains the recommended daily allowance of patriotism. Side effects may include spontaneous saluting, loud opinions about Automatons and an urge to re-enlist."
     },
@@ -111,7 +108,7 @@
       "tag": "EVENT",
       "publishedAt": "2026-10-28T12:05:00Z",
       "title": "Kessur holds: Major Order complete",
-      "body": "Helldivers repelled all three Terminid waves at Kessur. 35 Medals have been delivered to every participating Helldiver."
+      "body": "Three Terminid waves broke against the walls of Kessur, and the colony still stands. High Command thanks every Helldiver who held the line. 35 Medals have been issued to all participating Helldivers. Super Earth remembers its heroes."
     },
     {
       "id": "salute-day-four",
@@ -150,8 +147,8 @@
       "sample": true,
       "tag": "PATCH",
       "publishedAt": "2026-10-14T10:00:00Z",
-      "title": "Patch 01.004.100: Eagle and shotgun adjustments",
-      "body": "The 500kg Bomb gains blast radius and the Breaker gets tighter spread, while the Arc Thrower loses some range. Full list in the Weapon Balance Tracker."
+      "title": "Ministry of Defense Directive 01.004.100: Eagle and shotgun refits",
+      "body": "Eagle 500kg payloads now carry a wider blast radius, the Breaker fires a tighter spread after a barrel refit, and the Diligence Counter Sniper is issued with an extra magazine. To conserve power cells, the Arc Thrower's range had to be reduced. Details in the Weapon Balance Tracker."
     },
     {
       "id": "who-called-the-orbital",
@@ -180,7 +177,7 @@
       "tag": "BREAKING",
       "publishedAt": "2026-10-16T21:10:00Z",
       "title": "Unknown signal traced to the Lantern sector",
-      "body": "Listening posts in the Lantern sector have picked up a repeating signal of Illuminate origin. Helldivers deployed nearby should expect increased patrol activity."
+      "body": "Listening posts in the Lantern sector have intercepted a repeating transmission of Illuminate origin. The Ministry of Science is analyzing the signal. Helldivers deployed in the region should expect increased patrol activity and report any unusual lights in the sky."
     },
     {
       "id": "lost-helldiver-found",
@@ -219,7 +216,6 @@
       "format": "ad",
       "source": "Pelican-1 Air Transit",
       "publishedAt": "2026-10-20T09:00:00Z",
-      "image": "/images/news/pelican-airways.png",
       "title": "Fly Pelican-1: We Land Where You Called Us. Usually.",
       "body": "Pelican-1 Air Transit has carried more than nine billion Helldivers to safety, give or take a few hundred thousand. Enjoy complimentary turbulence, panoramic views of the enemy and a pilot who will absolutely leave without you if the timer says so. Pelican-1: departure is guaranteed, arrival is a team effort."
     },
@@ -249,8 +245,8 @@
       "sample": true,
       "tag": "EVENT",
       "publishedAt": "2026-10-22T12:00:00Z",
-      "title": "New Major Order: Hold the Line at Kessur",
-      "body": "High Command has issued a new Major Order. Defend Kessur against three Terminid waves within six days."
+      "title": "New Major Order: hold the line at Kessur",
+      "body": "High Command has issued a new Major Order: defend the colony of Kessur against three Terminid waves within six days. Evacuation is not an option. Survival is."
     },
     {
       "id": "stratagem-fix-hotfix",
@@ -258,8 +254,8 @@
       "sample": true,
       "tag": "PATCH",
       "publishedAt": "2026-10-18T09:30:00Z",
-      "title": "Hotfix: stratagem beacons no longer bounce off Hellpods",
-      "body": "A small hotfix resolves an issue where stratagem beacons could deflect off landed Hellpods and land far from their target."
+      "title": "Ministry of Defense field correction: stratagem beacons recalibrated",
+      "body": "Field reports showed stratagem beacons deflecting off landed Hellpods and guiding strikes far from their targets. The Ministry of Defense has pushed a correction to all beacon firmware. Helldivers may now throw with confidence, if not always with accuracy."
     },
     {
       "id": "calyx-reinforced",
@@ -267,8 +263,8 @@
       "sample": true,
       "tag": "BREAKING",
       "publishedAt": "2026-10-10T17:20:00Z",
-      "title": "Terminid swarm reported near Calyx Minor",
-      "body": "Orbital scans show a large Terminid swarm moving towards Calyx Minor. Liberation progress on the planet is falling."
+      "title": "Terminid swarm closing on Calyx Minor",
+      "body": "Orbital scans show a massive Terminid swarm moving towards Calyx Minor, and liberation progress on the planet is falling. High Command urges every available Helldiver to deploy before the colony is overrun."
     }
   ]
 }

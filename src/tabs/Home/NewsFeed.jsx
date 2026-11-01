@@ -7,6 +7,7 @@ import ImageWithFallback from "../../components/ImageWithFallback";
 import Panel from "../../components/Panel";
 import { useNow } from "../../lib/useNow";
 import { filterNews } from "./homeData";
+import NewsCover from "./NewsCover";
 import NewsTags from "./NewsTags";
 
 const FILTERS = [
@@ -14,6 +15,21 @@ const FILTERS = [
   { id: "official", label: "Official" },
   { id: "broadcasts", label: "Broadcasts" },
 ];
+
+/**
+ * Photo of a news item: content "image" or /images/news/<id>.png when that file exists, otherwise the
+ * automatic cover. compact = small thumbnail.
+ */
+function NewsImage({ item, compact = false, className = "" }) {
+  return (
+    <ImageWithFallback
+      src={item.image ?? `/images/news/${item.id}.png`}
+      alt={item.title}
+      className={className}
+      fallback={<NewsCover item={item} compact={compact} className={className} />}
+    />
+  );
+}
 
 function RelatedLink({ itemId }) {
   return (
@@ -30,15 +46,13 @@ function AdCard({ item, now }) {
       <article className="relative border border-line-strong bg-warn-fill/40 p-5">
         <CornerBrackets size={18} thickness={2} className="border-accent-2" />
         <NewsTags item={item} now={now} />
-        <div className={`mt-3 grid gap-5 ${item.image ? "grid-cols-[minmax(0,1fr)_220px]" : ""}`}>
+        <div className="mt-3 grid grid-cols-[minmax(0,1fr)_240px] gap-5">
           <div>
             <p className="hud-label text-accent-2">{item.source}</p>
             <h3 className="mt-1 text-[21px] font-bold uppercase leading-tight tracking-[0.04em] text-text">{item.title}</h3>
             <p className="mt-2 max-w-[80ch] text-[15px] leading-relaxed text-text-2">{item.body}</p>
           </div>
-          {item.image ? (
-            <ImageWithFallback src={item.image} alt={item.title} label={item.source} className="h-full min-h-32 w-full border border-line" />
-          ) : null}
+          <NewsImage item={item} className="aspect-video w-full self-start border border-line object-cover" />
         </div>
       </article>
     </li>
@@ -54,18 +68,21 @@ function NewsItem({ item, open, onToggle, now }) {
         type="button"
         aria-expanded={open}
         onClick={onToggle}
-        className="hud-transition -mx-3 block w-[calc(100%+24px)] px-3 py-4 text-left transition-colors hover:bg-inset"
+        className={`hud-transition -mx-3 grid w-[calc(100%+24px)] items-center gap-5 px-3 py-4 text-left transition-colors hover:bg-inset ${
+          open ? "grid-cols-1" : "grid-cols-[minmax(0,1fr)_128px]"
+        }`}
       >
-        <NewsTags item={item} now={now} showSource />
-        <h3 className="mt-2 text-[17px] font-semibold leading-snug text-text">{item.title}</h3>
-        {!open ? <p className="mt-1 line-clamp-1 text-[14px] text-muted">{item.body}</p> : null}
+        <div className="min-w-0">
+          <NewsTags item={item} now={now} showSource />
+          <h3 className="mt-2 text-[17px] font-semibold leading-snug text-text">{item.title}</h3>
+          {!open ? <p className="mt-1 line-clamp-1 text-[14px] text-muted">{item.body}</p> : null}
+        </div>
+        {!open ? <NewsImage item={item} compact className="h-[72px] w-32 border border-line object-cover" /> : null}
       </button>
       {open ? (
         <div className="pb-5">
           <p className="max-w-[80ch] text-[15px] leading-relaxed text-text-2">{item.body}</p>
-          {item.image ? (
-            <ImageWithFallback src={item.image} alt={item.title} label={item.source ?? "News image"} className="mt-4 aspect-[16/7] w-full max-w-2xl border border-line" />
-          ) : null}
+          <NewsImage item={item} className="mt-4 aspect-video w-full max-w-2xl border border-line object-cover" />
           {item.relatedItem ? <RelatedLink itemId={item.relatedItem} /> : null}
           {item.sample ? <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">Sample data</p> : null}
         </div>
