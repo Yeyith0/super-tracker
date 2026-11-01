@@ -4,6 +4,17 @@ Release notes for each version. The release workflow copies the section of the t
 release and into the in-app update notice, so write it for players. `npm run release X.Y.Z` stops if the section is
 missing.
 
+## 0.2.0 — Command Deck
+
+The Home tab is live.
+
+- **Major Order** briefing with a live countdown, planet-by-planet progress and the reward, plus a record of past orders
+- **Galactic News & Events**: war news side by side with **Super Earth Broadcasts**, in-universe reports, Ministry bulletins and parody ads straight from the propaganda desk
+- **Weapon Balance Tracker**: every buff and nerf, grouped by patch, with filters
+- **Bounty Board**: the top Anti-Treason Officers and your own position
+
+War data, balance changes and the bounty board are sample data for now; live war data arrives in a later update.
+
 ## 0.1.2 — Update Check
 
 A small update that confirms automatic updates work end to end.
