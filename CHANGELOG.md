@@ -4,6 +4,18 @@ Release notes for each version. The release workflow copies the section of the t
 release and into the in-app update notice, so write it for players. `npm run release X.Y.Z` stops if the section is
 missing.
 
+## 0.3.0 — Armory
+
+The Arsenal is open.
+
+- **Catalog** of primaries, secondaries, support weapons, grenades and stratagems, with search, sorting and the latest buff or nerf on every card
+- **Compare** any two items side by side: mirrored stat bars show which one wins, plus both damage drop-off curves and their armor penetration
+- **Detail panel** for every item with all stats, its drop-off curve and the latest patch note
+- "View in Arsenal" links in the news and the Balance Tracker now open the item directly
+- The C-01 permit report now has its own front-line illustration
+
+Weapon values are approximate for now.
+
 ## 0.2.1 — Propaganda Desk
 
 - Every news item now carries a picture: a small preview in the list and a large one when you open it
