@@ -4,6 +4,13 @@ Release notes for each version. The release workflow copies the section of the t
 release and into the in-app update notice, so write it for players. `npm run release X.Y.Z` stops if the section is
 missing.
 
+## 0.2.1 — Propaganda Desk
+
+- Every news item now carries a picture: a small preview in the list and a large one when you open it
+- Items without a photo get their own Super Earth cover art, from Ministry of Defense bulletins to parody ads
+- Official news now reads like a real dispatch from High Command and the Ministry of Defense
+- Cleaner tags: only PATCH, BREAKING, EVENT and IN-UNIVERSE
+
 ## 0.2.0 — Command Deck
 
 The Home tab is live.
