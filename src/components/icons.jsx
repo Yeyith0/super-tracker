@@ -108,6 +108,13 @@ export const IconWarning = (p) => (
   </Svg>
 );
 
+export const IconClock = (p) => (
+  <Svg {...p}>
+    <circle cx="8" cy="9" r="5.6" fill="none" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M8 6v3.4l2.2 1.4M6.4 1.2h3.2M12.6 3.4l1 1" fill="none" stroke="currentColor" strokeWidth="1.5" />
+  </Svg>
+);
+
 export const IconExternal = (p) => (
   <Svg {...p}>
     <path d="M5 11l6-6M6 4.5h5.5V10" {...stroke} />

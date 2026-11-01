@@ -22,7 +22,7 @@ describe("app shell", () => {
 
   it("opens Home on its first inner tab with the profile bar", async () => {
     render(<App />);
-    expect(await screen.findByText("Tab under construction")).toBeInTheDocument();
+    expect(await screen.findByText("Liberate the Varn Corridor")).toBeInTheDocument();
     expect(window.location.hash).toBe("#/home/galactic-news");
     expect(screen.getByRole("link", { name: "Galactic News" })).toHaveAttribute("aria-current", "page");
     expect(screen.getByRole("meter", { name: /alignment/i })).toHaveAttribute("aria-valuenow", "56");

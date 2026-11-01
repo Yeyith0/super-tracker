@@ -1,0 +1,93 @@
+{
+  "contentVersion": 1,
+  "schemaVersion": 1,
+  "sample": true,
+  "current": {
+    "id": "mo-varn-corridor",
+    "priority": "Alpha",
+    "title": "Liberate the Varn Corridor",
+    "briefing": "Automaton forces have dug into the Varn Corridor, cutting the supply line to the eastern colonies. Liberate Varn Prime, Osk-IV and Talmerra before the enemy fortifies the sector. Every planet that falls back into Automaton hands costs Super Earth a week of production.",
+    "startedAt": "2026-10-29T12:00:00Z",
+    "endsAt": "2026-11-04T02:30:00Z",
+    "targets": [
+      { "planet": "Varn Prime", "progress": 100, "status": "liberated" },
+      { "planet": "Osk-IV", "progress": 64.2, "status": "contested", "trend": "up" },
+      { "planet": "Talmerra", "progress": 12.8, "status": "losing", "trend": "down" }
+    ],
+    "reward": { "type": "Medals", "amount": 45 }
+  },
+  "past": [
+    {
+      "id": "mo-hold-the-line",
+      "title": "Hold the Line at Kessur",
+      "summary": "Defend Kessur against three Terminid waves.",
+      "startedAt": "2026-10-22T12:00:00Z",
+      "endedAt": "2026-10-28T12:00:00Z",
+      "result": "success",
+      "reward": { "type": "Medals", "amount": 35 }
+    },
+    {
+      "id": "mo-steel-verdict",
+      "title": "Operation Steel Verdict",
+      "summary": "Kill 2 million Automatons with Plasma Punishers on Osk-IV.",
+      "startedAt": "2026-10-15T12:00:00Z",
+      "endedAt": "2026-10-21T12:00:00Z",
+      "result": "failed",
+      "reward": { "type": "Medals", "amount": 40 }
+    },
+    {
+      "id": "mo-gloom-survey",
+      "title": "Survey the Gloom Belt",
+      "summary": "Complete 150,000 geological survey missions.",
+      "startedAt": "2026-10-08T12:00:00Z",
+      "endedAt": "2026-10-14T12:00:00Z",
+      "result": "success",
+      "reward": { "type": "Requisition", "amount": 5000 }
+    },
+    {
+      "id": "mo-ember-reach",
+      "title": "Retake Ember Reach",
+      "summary": "Liberate Ember Reach and Calyx Minor.",
+      "startedAt": "2026-10-01T12:00:00Z",
+      "endedAt": "2026-10-07T12:00:00Z",
+      "result": "success",
+      "reward": { "type": "Medals", "amount": 45 }
+    },
+    {
+      "id": "mo-silent-nests",
+      "title": "Silence the Nests",
+      "summary": "Destroy 500,000 Terminid nests across the Ursa sector.",
+      "startedAt": "2026-09-24T12:00:00Z",
+      "endedAt": "2026-09-30T12:00:00Z",
+      "result": "failed",
+      "reward": { "type": "Medals", "amount": 30 }
+    },
+    {
+      "id": "mo-iron-harvest",
+      "title": "Iron Harvest",
+      "summary": "Deliver 12 million samples to the Ministry of Science.",
+      "startedAt": "2026-09-17T12:00:00Z",
+      "endedAt": "2026-09-23T12:00:00Z",
+      "result": "success",
+      "reward": { "type": "Requisition", "amount": 7500 }
+    },
+    {
+      "id": "mo-lantern-watch",
+      "title": "Lantern Watch",
+      "summary": "Hold Lantern Station against the Illuminate incursion.",
+      "startedAt": "2026-09-10T12:00:00Z",
+      "endedAt": "2026-09-16T12:00:00Z",
+      "result": "success",
+      "reward": { "type": "Medals", "amount": 50 }
+    },
+    {
+      "id": "mo-dust-road",
+      "title": "The Dust Road",
+      "summary": "Escort 40,000 civilian convoys through the Torvan wastes.",
+      "startedAt": "2026-09-03T12:00:00Z",
+      "endedAt": "2026-09-09T12:00:00Z",
+      "result": "failed",
+      "reward": { "type": "Medals", "amount": 35 }
+    }
+  ]
+}

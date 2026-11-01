@@ -1,4 +1,4 @@
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useLocation, useParams } from "react-router-dom";
 import { useFeature } from "../../content/useContentStore";
 import { tabPath } from "../../tabs/tabs";
 import Badge from "../Badge";
@@ -14,13 +14,15 @@ import ProfileBar from "./ProfileBar";
  */
 export default function TabPage({ tab, component: Component }) {
   const { subtab } = useParams();
+  const { search } = useLocation();
   const featureOn = useFeature(tab.feature);
   const subtabs = tab.subtabs;
 
   if (!featureOn && import.meta.env.PROD) return <FeatureClosed tab={tab} />;
 
   if (subtabs.length && !subtabs.some((s) => s.id === subtab)) {
-    return <Navigate to={tabPath(tab, subtabs[0].id)} replace />;
+    // Keep the query (e.g. #/arsenal?item=railgun from the Home tab) through the redirect.
+    return <Navigate to={{ pathname: tabPath(tab, subtabs[0].id), search }} replace />;
   }
   if (!subtabs.length && subtab) {
     return <Navigate to={tabPath(tab)} replace />;

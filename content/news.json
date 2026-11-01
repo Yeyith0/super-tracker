@@ -1,0 +1,274 @@
+{
+  "contentVersion": 1,
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "bot-counteroffensive-east",
+      "kind": "official",
+      "sample": true,
+      "tag": "BREAKING",
+      "publishedAt": "2026-11-01T08:50:00Z",
+      "title": "Bot counter-offensive detected on the eastern front",
+      "body": "Automaton forces have launched a coordinated push from the Varn Corridor towards Osk-IV. High Command is redirecting the Fourth Fleet; Helldivers are asked to prioritise defense missions in the sector."
+    },
+    {
+      "id": "c01-permit-frontline",
+      "kind": "broadcast",
+      "tone": "comedy",
+      "format": "report",
+      "source": "SEAF Frontline Desk",
+      "publishedAt": "2026-11-01T06:15:00Z",
+      "image": "/images/news/c01-permit-frontline.png",
+      "title": "SEAF Trooper Saves Helldiver, Ministry Rewards Both With a C-01 Permit",
+      "body": "Private Dov Hallen of the 12th SEAF Rifles crawled into a collapsing Terminid tunnel on Varn Prime and dragged a wounded Helldiver back to extraction, armed with nothing but a shovel and an unshakeable belief in Managed Democracy. The Ministry of Humanity has rewarded the pair with a joint C-01 permit, calling it \"the natural outcome of exemplary teamwork.\" Both recipients confirmed they have not technically been on a date yet. The permit is valid for 30 days or until the next planetary evacuation, whichever comes first."
+    },
+    {
+      "id": "eau-de-helldiver",
+      "kind": "broadcast",
+      "tone": "comedy",
+      "format": "ad",
+      "source": "Super Earth Fragrances",
+      "publishedAt": "2026-10-31T18:00:00Z",
+      "image": "/images/news/eau-de-helldiver.png",
+      "title": "EAU DE HELLDIVER — Smell Like Victory",
+      "body": "Capture the scent of the front line. Top notes of scorched Terminid and fresh cordite, a heart of recycled Pelican air, and a lingering base of pure liberty. \"It smells like victory. And a little like the inside of a Hellpod.\" Available at every Ministry of Prosperity distribution center. Keep away from open flames, Bile Titans and undemocratic thoughts."
+    },
+    {
+      "id": "osk-defense-weekend",
+      "kind": "official",
+      "sample": true,
+      "tag": "EVENT",
+      "publishedAt": "2026-10-31T12:00:00Z",
+      "title": "Defense campaign opens in the Osk sector this weekend",
+      "body": "A two-day defense campaign starts on Saturday. Completed defense missions in the Osk sector count double towards planetary liberation until Sunday 23:59 UTC."
+    },
+    {
+      "id": "retreat-was-advance",
+      "kind": "broadcast",
+      "tone": "satire",
+      "format": "bulletin",
+      "source": "Ministry of Truth",
+      "publishedAt": "2026-10-30T16:20:00Z",
+      "title": "Ministry of Truth: Last Week's Withdrawal Was an \"Advance in the Other Direction\"",
+      "body": "The Ministry of Truth reminds all citizens that Super Earth forces do not retreat. The recent movement of the Fourth Fleet away from Talmerra was a bold advance towards a strategically superior position located, by coincidence, behind us. Citizens who use the word \"retreat\" will be gently re-educated. The word \"behind\" is under review."
+    },
+    {
+      "id": "railgun-capacitors",
+      "kind": "broadcast",
+      "tone": "serious",
+      "format": "bulletin",
+      "source": "Ministry of Defense",
+      "publishedAt": "2026-10-28T14:05:00Z",
+      "relatedItem": "railgun",
+      "title": "Ministry of Defense Upgrades Railgun Capacitors",
+      "body": "By order of the Ministry of Defense, every Railgun in active service has been refitted with high-density capacitor banks, cutting charge time from 1.4 to 1.1 seconds. Field crews on Osk-IV report that armored Automaton units now fall before they finish their threat assessment. Helldivers are reminded that overcharging in unsafe mode remains a personal decision with personal consequences."
+    },
+    {
+      "id": "orbital-laser-power-cell",
+      "kind": "broadcast",
+      "tone": "serious",
+      "format": "bulletin",
+      "source": "Ministry of Defense",
+      "publishedAt": "2026-10-28T14:00:00Z",
+      "relatedItem": "orbital-laser",
+      "title": "Destroyers Authorized an Additional Orbital Laser Run Per Mission",
+      "body": "The Ministry of Defense has approved an extra power cell for every Super Destroyer, raising the Orbital Laser allowance by one strike per mission. Officers are instructed to coordinate targeting with their squad before calling the beam. Friendly lasing remains a court-martial offense, regardless of how cool it looked."
+    },
+    {
+      "id": "patch-01-004-200",
+      "kind": "official",
+      "sample": true,
+      "tag": "PATCH",
+      "publishedAt": "2026-10-28T10:00:00Z",
+      "title": "Patch 01.004.200 notes: 18 weapon changes, 3 stratagem fixes",
+      "body": "The latest update rebalances primary weapons, adjusts the Orbital Laser and fixes three stratagem targeting issues. See the Weapon Balance Tracker for every buff and nerf."
+    },
+    {
+      "id": "steel-verdict-failed",
+      "kind": "broadcast",
+      "tone": "satire",
+      "format": "report",
+      "source": "High Command Press Office",
+      "publishedAt": "2026-10-21T13:30:00Z",
+      "title": "Major Order Fails After Helldivers Ignore the Weapons They Were Ordered to Use",
+      "body": "High Command confirms that Operation Steel Verdict has failed. The order asked Helldivers to eliminate two million Automatons with Plasma Punishers; field telemetry shows that 0.4% of deployed Helldivers actually brought one. The remaining 99.6% arrived with the same three stratagems as always. \"We provided the weapons, the briefing and a motivational jingle,\" said a visibly tired spokesperson. Mandatory seminars on reading comprehension begin Monday."
+    },
+    {
+      "id": "freedom-fizz",
+      "kind": "broadcast",
+      "tone": "comedy",
+      "format": "ad",
+      "source": "Freedom Fizz Beverage Directorate",
+      "publishedAt": "2026-10-26T09:00:00Z",
+      "image": "/images/news/freedom-fizz.png",
+      "title": "FREEDOM FIZZ — Now With 20% More Freedom",
+      "body": "Thirsty after a twelve-hour defense mission? Reach for Freedom Fizz, the only soda brewed under direct supervision of the Ministry of Prosperity. Every can contains the recommended daily allowance of patriotism. Side effects may include spontaneous saluting, loud opinions about Automatons and an urge to re-enlist."
+    },
+    {
+      "id": "kessur-held",
+      "kind": "official",
+      "sample": true,
+      "tag": "EVENT",
+      "publishedAt": "2026-10-28T12:05:00Z",
+      "title": "Kessur holds: Major Order complete",
+      "body": "Helldivers repelled all three Terminid waves at Kessur. 35 Medals have been delivered to every participating Helldiver."
+    },
+    {
+      "id": "salute-day-four",
+      "kind": "broadcast",
+      "tone": "comedy",
+      "format": "report",
+      "source": "Super Earth Broadcast Network",
+      "publishedAt": "2026-10-25T11:45:00Z",
+      "title": "Helldiver Refuses to Stop Saluting After Medal Ceremony, Now on Day Four",
+      "body": "Doctors aboard the Super Destroyer Lady of Liberty report that a decorated Helldiver has held a full salute since Tuesday's medal ceremony. Crew members have started bringing him food and gently rotating him for maximum visibility. \"He says lowering his arm would be an act of treason,\" said the ship's medic. The Ministry of Truth has called it \"the most democratic medical emergency of the year.\""
+    },
+    {
+      "id": "osk-water-restored",
+      "kind": "broadcast",
+      "tone": "serious",
+      "format": "report",
+      "source": "SEAF Frontline Desk",
+      "publishedAt": "2026-10-24T08:10:00Z",
+      "title": "SEAF Engineers Restore Clean Water to Osk-IV Colony",
+      "body": "After eleven days under Automaton artillery, SEAF combat engineers have reconnected the main water plant serving the Osk-IV colony. Over forty thousand citizens had been living on emergency rations. Three engineers were wounded during the operation and are expected to recover. High Command thanks every Helldiver who held the perimeter while the work was done."
+    },
+    {
+      "id": "eagle-500kg-yield",
+      "kind": "broadcast",
+      "tone": "serious",
+      "format": "bulletin",
+      "source": "Ministry of Defense",
+      "publishedAt": "2026-10-14T15:00:00Z",
+      "relatedItem": "eagle-500kg-bomb",
+      "title": "Eagle Wing Receives Wider-Yield 500kg Payloads",
+      "body": "The Ministry of Defense has cleared a new casing for the Eagle 500kg Bomb, increasing its blast radius by ten percent. Eagle pilots report no change to their flight characteristics and a significant improvement to their mood. Helldivers are advised to update their personal definition of \"safe distance\" accordingly."
+    },
+    {
+      "id": "arc-thrower-range",
+      "kind": "official",
+      "sample": true,
+      "tag": "PATCH",
+      "publishedAt": "2026-10-14T10:00:00Z",
+      "title": "Patch 01.004.100: Eagle and shotgun adjustments",
+      "body": "The 500kg Bomb gains blast radius and the Breaker gets tighter spread, while the Arc Thrower loses some range. Full list in the Weapon Balance Tracker."
+    },
+    {
+      "id": "who-called-the-orbital",
+      "kind": "broadcast",
+      "tone": "comedy",
+      "format": "report",
+      "source": "Super Earth Broadcast Network",
+      "publishedAt": "2026-10-19T19:30:00Z",
+      "title": "Squad Spends Entire Mission Arguing Over Who Called the Orbital; Terminids Win by Default",
+      "body": "A four-person squad on Kessur failed its objective after a forty-minute debate over who had called down the Orbital Precision Strike that eliminated their own Pelican. All four Helldivers deny responsibility. The Terminids, who did not participate in the discussion, captured the objective unopposed. High Command has ordered the squad to resolve the matter in writing, in triplicate."
+    },
+    {
+      "id": "prosperity-life-insurance",
+      "kind": "broadcast",
+      "tone": "satire",
+      "format": "ad",
+      "source": "Ministry of Prosperity",
+      "publishedAt": "2026-10-17T10:00:00Z",
+      "title": "Prosperity Life Insurance: Because Helldivers Are Replaceable, But Benefits Are Not",
+      "body": "Every Helldiver is a hero. Every hero is, statistically, temporary. Prosperity Life Insurance guarantees your family a monthly ration bonus, a framed certificate of your sacrifice and a priority slot for their own enlistment. Sign up during your next medical scan. No questions asked. Especially not by you."
+    },
+    {
+      "id": "illuminate-signal",
+      "kind": "official",
+      "sample": true,
+      "tag": "BREAKING",
+      "publishedAt": "2026-10-16T21:10:00Z",
+      "title": "Unknown signal traced to the Lantern sector",
+      "body": "Listening posts in the Lantern sector have picked up a repeating signal of Illuminate origin. Helldivers deployed nearby should expect increased patrol activity."
+    },
+    {
+      "id": "lost-helldiver-found",
+      "kind": "broadcast",
+      "tone": "comedy",
+      "format": "report",
+      "source": "SEAF Frontline Desk",
+      "publishedAt": "2026-10-15T07:50:00Z",
+      "title": "Helldiver Missing for Three Weeks Found, Says He Was \"Spreading Democracy Locally\"",
+      "body": "A Helldiver declared missing after a Hellpod malfunction on Calyx Minor has been found alive, sunburnt and in charge of a small village he founded. Villagers report that he holds an election every morning and wins every one of them. SEAF officials are still deciding whether to court-martial him or promote him."
+    },
+    {
+      "id": "talmerra-memorial",
+      "kind": "broadcast",
+      "tone": "serious",
+      "format": "report",
+      "source": "Super Earth Broadcast Network",
+      "publishedAt": "2026-10-13T12:00:00Z",
+      "title": "Memorial Held for the Fallen of the Talmerra Line",
+      "body": "A minute of silence was observed across the fleet for the Helldivers and SEAF troopers who fell holding the Talmerra line. Their sacrifice bought the colony time to evacuate eighty thousand civilians. Their names have been added to the Wall of Liberty aboard every Super Destroyer. They will not be forgotten."
+    },
+    {
+      "id": "orbital-weather-report",
+      "kind": "broadcast",
+      "tone": "satire",
+      "format": "bulletin",
+      "source": "Ministry of Truth",
+      "publishedAt": "2026-10-12T06:00:00Z",
+      "title": "Weather Report: 100% Chance of Orbital Precision Strike in Sector 7",
+      "body": "Today's forecast for Sector 7: clear skies until 09:00, followed by a brief but intense Orbital Precision Strike. Citizens are advised to carry an umbrella, a helmet and a sincere apology for whatever they did to deserve it. Tomorrow: freedom, with scattered liberation."
+    },
+    {
+      "id": "pelican-airways",
+      "kind": "broadcast",
+      "tone": "comedy",
+      "format": "ad",
+      "source": "Pelican-1 Air Transit",
+      "publishedAt": "2026-10-20T09:00:00Z",
+      "image": "/images/news/pelican-airways.png",
+      "title": "Fly Pelican-1: We Land Where You Called Us. Usually.",
+      "body": "Pelican-1 Air Transit has carried more than nine billion Helldivers to safety, give or take a few hundred thousand. Enjoy complimentary turbulence, panoramic views of the enemy and a pilot who will absolutely leave without you if the timer says so. Pelican-1: departure is guaranteed, arrival is a team effort."
+    },
+    {
+      "id": "automaton-citizenship",
+      "kind": "broadcast",
+      "tone": "satire",
+      "format": "report",
+      "source": "Super Earth Broadcast Network",
+      "publishedAt": "2026-10-27T15:40:00Z",
+      "title": "Captured Automaton Applies for Citizenship, Rejected for \"Insufficient Freedom\"",
+      "body": "An Automaton unit captured on Osk-IV has submitted a citizenship application, complete with a hand-drawn Super Earth flag. The Ministry of Unity rejected it within four seconds, citing \"insufficient freedom, excessive bolts and an unacceptable red glow.\" The unit has been reassigned to the Ministry of Science, where it will be studied, disassembled and, if it behaves, thanked."
+    },
+    {
+      "id": "truth-about-truth",
+      "kind": "broadcast",
+      "tone": "satire",
+      "format": "bulletin",
+      "source": "Ministry of Truth",
+      "publishedAt": "2026-10-23T10:30:00Z",
+      "title": "Reminder: All Questions About the Ministry of Truth Are Answered by the Ministry of Truth",
+      "body": "To reduce confusion, the Ministry of Truth reminds citizens that it is the only reliable source of information about the Ministry of Truth. Independent questions have been found to cause headaches, doubt and in rare cases thinking. If you have a question, please submit it in writing. The answer is yes."
+    },
+    {
+      "id": "sample-war-update",
+      "kind": "official",
+      "sample": true,
+      "tag": "EVENT",
+      "publishedAt": "2026-10-22T12:00:00Z",
+      "title": "New Major Order: Hold the Line at Kessur",
+      "body": "High Command has issued a new Major Order. Defend Kessur against three Terminid waves within six days."
+    },
+    {
+      "id": "stratagem-fix-hotfix",
+      "kind": "official",
+      "sample": true,
+      "tag": "PATCH",
+      "publishedAt": "2026-10-18T09:30:00Z",
+      "title": "Hotfix: stratagem beacons no longer bounce off Hellpods",
+      "body": "A small hotfix resolves an issue where stratagem beacons could deflect off landed Hellpods and land far from their target."
+    },
+    {
+      "id": "calyx-reinforced",
+      "kind": "official",
+      "sample": true,
+      "tag": "BREAKING",
+      "publishedAt": "2026-10-10T17:20:00Z",
+      "title": "Terminid swarm reported near Calyx Minor",
+      "body": "Orbital scans show a large Terminid swarm moving towards Calyx Minor. Liberation progress on the planet is falling."
+    }
+  ]
+}

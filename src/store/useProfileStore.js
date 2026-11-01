@@ -12,6 +12,9 @@ const SAMPLE_PROFILE = {
   // Base alignment; Phase 7 derives it from case verdicts and upheld reports.
   alignmentBase: 56,
   verdictsInFavor: 14,
+  // Bounty Board position (Phase 7 derives it from the user's resolved cases).
+  resolvedCases: 14,
+  bountyRank: 27,
 };
 
 export const useProfileStore = create(

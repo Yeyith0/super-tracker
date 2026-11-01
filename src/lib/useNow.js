@@ -1,0 +1,11 @@
+import { useEffect, useState } from "react";
+
+/** Current time (ms), refreshed every intervalMs. For countdowns and "x min ago" labels. */
+export function useNow(intervalMs = 1000) {
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    const timer = setInterval(() => setNow(Date.now()), intervalMs);
+    return () => clearInterval(timer);
+  }, [intervalMs]);
+  return now;
+}

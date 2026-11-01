@@ -1,0 +1,17 @@
+{
+  "contentVersion": 1,
+  "schemaVersion": 1,
+  "sample": true,
+  "officers": [
+    { "id": "halvek", "callsign": "CMDR. HALVEK", "resolvedCases": 142 },
+    { "id": "orsa-9", "callsign": "LT. ORSA-9", "resolvedCases": 118 },
+    { "id": "dreyn", "callsign": "CPT. DREYN", "resolvedCases": 97 },
+    { "id": "kavra", "callsign": "CPL. KAVRA", "resolvedCases": 81 },
+    { "id": "mirren", "callsign": "PVT. MIRREN", "resolvedCases": 66 },
+    { "id": "tadeo", "callsign": "SGT. TADEO", "resolvedCases": 59 },
+    { "id": "voss-3", "callsign": "LT. VOSS-3", "resolvedCases": 47 },
+    { "id": "anwen", "callsign": "CPT. ANWEN", "resolvedCases": 38 },
+    { "id": "rusk", "callsign": "SGT. RUSK", "resolvedCases": 31 },
+    { "id": "ilya-7", "callsign": "CPL. ILYA-7", "resolvedCases": 24 }
+  ]
+}
